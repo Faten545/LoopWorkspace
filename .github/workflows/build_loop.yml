@@ -203,6 +203,7 @@ jobs:
           # Set NovoRapid rapid-acting insulin action duration to 4 hours
           sed -i '' '/case \.rapidActingAdult:/,/return \.minutes(360)/ s/return \.minutes(360)/return .minutes(240)/' LoopKit/LoopKit/Insulin/ExponentialInsulinModelPreset.swift
           sed -i '' '/case \.rapidActingChild:/,/return \.minutes(360)/ s/return \.minutes(360)/return .minutes(240)/' LoopKit/LoopKit/Insulin/ExponentialInsulinModelPreset.swift
+          grep -A 12 'public var actionDuration' LoopKit/LoopKit/Insulin/ExponentialInsulinModelPreset.swift
 
           # Submodule xxxxx patches:
 
