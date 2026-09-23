@@ -234,6 +234,12 @@ jobs:
           # and make sure to specify the submodule by setting "--directory=(submodule_name)".
           # Several patches may be added per submodule.
           # Adding comments (#) may be useful to easily tell the individual patches apart.
+          # Set NovoRapid rapid-acting insulin action duration to 4 hours
+          sed -i '' '/case \.rapidActingAdult:/,/return \.minutes(360)/ s/return \.minutes(360)/return .minutes(240)/' LoopKit/LoopKit/Insulin/ExponentialInsulinModelPreset.swift
+          sed -i '' '/case \.rapidActingChild:/,/return \.minutes(360)/ s/return \.minutes(360)/return .minutes(240)/' LoopKit/LoopKit/Insulin/ExponentialInsulinModelPreset.swift
+
+          # Verify that the duration was changed to 240 minutes
+          grep -A 8 "public var actionDuration" LoopKit/LoopKit/Insulin/ExponentialInsulinModelPreset.swift
 
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
