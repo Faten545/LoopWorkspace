@@ -203,6 +203,10 @@ jobs:
           # General template for customizing submodule LoopKit 
           # Copy url from a GitHub commit or pull request and insert below, and remove the "#" sign from the beginning of the line to activate:
           #curl url_to_github_commit.patch | git apply --directory=LoopKit -v --whitespace=fix
+         
+          # Set NovoRapid rapid-acting insulin action duration to 4 hours
+          sed -i '' '/case \.rapidActingAdult:/,/return \.minutes(360)/ s/return \.minutes(360)/return .minutes(240)/' LoopKit/LoopKit/Insulin/ExponentialInsulinModelPreset.swift
+          sed -i '' '/case \.rapidActingChild:/,/return \.minutes(360)/ s/return \.minutes(360)/return .minutes(240)/' LoopKit/LoopKit/Insulin/ExponentialInsulinModelPreset.swift
 
           # Submodule xxxxx patches:
 
